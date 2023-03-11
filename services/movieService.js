@@ -1,45 +1,45 @@
-const MovieRepository = require("../repositories/movieRepository")
+const MovieRepository = require("../repositories/movieRepository");
 
 class MovieService {
-    static findMovie = async (next) => {
+    static findMovie = async () => {
         try {
-            return await MovieRepository.findMovie(next)
+            return await MovieRepository.findMovie();
         } catch (err) {
-            next(err)
+            throw err;
         }
-    }
+    };
 
-    static findMovieById = async (id, next) => {
+    static findMovieById = async (id) => {
         try {
-            return await MovieRepository.findMovieById(id, next)
+            return await MovieRepository.findMovieById(id);
         } catch (err) {
-            next(err)
+            throw err;
         }
-    }
+    };
 
-    static createMovie = async (params, next) => {
+    static createMovie = async (params) => {
         try {
-            return await MovieRepository.createMovie(params, next)
+            return await MovieRepository.createMovie(params);
         } catch (err) {
-            next(err)
+            throw err;
         }
-    }
+    };
 
-    static updateMovie = async (params, id, next) => {
+    static updateMovie = async (params, id) => {
         try {
-            return await MovieRepository.updateMovie(params, id, next)
+            return await MovieRepository.updateMovie(params, id);
         } catch (err) {
-            next(err)
+            throw err;
         }
-    }
+    };
 
-    static deleteMovie = async (id, next) => {
+    static deleteMovie = async (id) => {
         try {
-            return await MovieRepository.deleteMovie(id, next)
+            return await MovieRepository.deleteMovie(id);
         } catch (err) {
-            next(err)
+            throw err;
         }
-    }
+    };
 }
 
-module.exports = MovieService
+module.exports = MovieService;

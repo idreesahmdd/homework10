@@ -1,10 +1,12 @@
 const express = require("express")
 const router = express.Router()
-const pool = require("../config/db")
+const UserController = require("../controllers/userController")
 
 // GET ALL USERS
-router.get("/", (req, res) => {
-    res.json("INI MASUK KE USERS")
-})
+router.get("/", UserController.findUser)
+router.get("/:id", UserController.findUserById)
+router.post("/", UserController.createUser)
+router.put("/:id", UserController.updateUser)
+router.delete("/:id", UserController.deleteUser)
 
 module.exports = router

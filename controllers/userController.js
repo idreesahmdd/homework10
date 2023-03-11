@@ -1,9 +1,9 @@
-const MovieService = require("../services/movieService");
+const UserService = require("../services/userService");
 
-class MovieController {
-    static findMovie = async (req, res) => {
+class UserController {
+    static findUser = async (req, res) => {
         try {
-            const data = await MovieService.findMovie();
+            const data = await UserService.findUser();
 
             res.status(200).json(data.rows);
         } catch (err) {
@@ -14,16 +14,16 @@ class MovieController {
         }
     };
 
-    static findMovieById = async (req, res) => {
+    static findUserById = async (req, res) => {
         try {
             const {id} = req.params;
-            const data = await MovieService.findMovieById(id, res);
+            const data = await UserService.findUserById(id, res);
 
             if (data) {
                 res.status(200).json(data);
             } else {
                 res.status(404).json({
-                    message: "Movie not found",
+                    message: "User not found",
                 });
             }
         } catch (err) {
@@ -34,17 +34,17 @@ class MovieController {
         }
     };
 
-    static createMovie = async (req, res) => {
+    static createUser = async (req, res) => {
         try {
-            const data = await MovieService.createMovie(req.body, res);
+            const data = await UserService.createUser(req.body, res);
 
             if (data) {
                 res.status(201).json({
-                    message: "New movie created successfully.",
+                    message: "New User created successfully.",
                 });
             } else {
                 res.status(400).json({
-                    message: "failed create new movie",
+                    message: "failed create new User",
                 });
             }
         } catch (err) {
@@ -56,19 +56,19 @@ class MovieController {
         }
     };
 
-    static updateMovie = async (req, res) => {
+    static updateUser = async (req, res) => {
         try {
             const {id} = req.params;
 
-            const data = await MovieService.updateMovie(req.body, id, res);
+            const data = await UserService.updateUser(req.body, id, res);
 
             if (data) {
                 res.status(200).json({
-                    message: "Updated movie successfully",
+                    message: "Updated user successfully",
                 });
             } else {
                 res.status(400).json({
-                    message: "Updated movie failed",
+                    message: "Updated user failed",
                 });
             }
         } catch (err) {
@@ -79,19 +79,19 @@ class MovieController {
         }
     };
 
-    static deleteMovie = async (req, res) => {
+    static deleteUser = async (req, res) => {
         try {
             const {id} = req.params;
 
-            const data = await MovieService.deleteMovie(id);
+            const data = await UserService.deleteUser(id);
 
             if (data) {
                 res.status(200).json({
-                    message: "Deleted movie successfully",
+                    message: "Deleted User successfully",
                 });
             } else {
                 res.status(404).json({
-                    message: "Movie not found",
+                    message: "User not found",
                 });
             }
         } catch (err) {
@@ -103,4 +103,4 @@ class MovieController {
     };
 }
 
-module.exports = MovieController;
+module.exports = UserController;

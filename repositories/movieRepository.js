@@ -1,45 +1,45 @@
-const MovieModel = require("../models/movieModel")
+const MovieModel = require("../models/movieModel");
 
 class MovieRepository {
-    static findMovie = async (next) => {
+    static findMovie = async () => {
         try {
-            return await MovieModel.allMovie(next)
+            return await MovieModel.allMovie();
         } catch (err) {
-            next(err)
+            throw err;
         }
-    }
+    };
 
-    static findMovieById = async (id, next) => {
+    static findMovieById = async (id) => {
         try {
-            return await MovieModel.movieById(id, next)
+            return await MovieModel.movieById(id);
         } catch (err) {
-            next(err)
+            throw err;
         }
-    }
+    };
 
-    static createMovie = async (params, next) => {
+    static createMovie = async (params) => {
         try {
-            return await MovieModel.createMovie(params, next)
+            return await MovieModel.createMovie(params);
         } catch (err) {
-            next(err)
+            throw err;
         }
-    }
+    };
 
-    static updateMovie = async (params, id, next) => {
+    static updateMovie = async (params, id) => {
         try {
-            return await MovieModel.updateMovie(params, id, next)
+            return await MovieModel.updateMovie(params, id);
         } catch (err) {
-            next(err)
+            throw err;
         }
-    }
+    };
 
-    static deleteMovie = async (id, next) => {
+    static deleteMovie = async (id) => {
         try {
-            return await MovieModel.deleteMovie(id, next)
+            return await MovieModel.deleteMovie(id);
         } catch (err) {
-            next(err)
+            throw err;
         }
-    }
+    };
 }
 
-module.exports = MovieRepository
+module.exports = MovieRepository;
