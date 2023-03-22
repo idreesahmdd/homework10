@@ -17,7 +17,7 @@ class UserController {
     static findUserById = async (req, res) => {
         try {
             const {id} = req.params;
-            const data = await UserService.findUserById(id, res);
+            const data = await UserService.findUserById(id);
 
             if (data) {
                 res.status(200).json(data);
@@ -36,7 +36,7 @@ class UserController {
 
     static createUser = async (req, res) => {
         try {
-            const data = await UserService.createUser(req.body, res);
+            const data = await UserService.createUser(req.body);
 
             if (data) {
                 res.status(201).json({
@@ -60,7 +60,7 @@ class UserController {
         try {
             const {id} = req.params;
 
-            const data = await UserService.updateUser(req.body, id, res);
+            const data = await UserService.updateUser(req.body, id);
 
             if (data) {
                 res.status(200).json({

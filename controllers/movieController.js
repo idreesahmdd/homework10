@@ -17,7 +17,7 @@ class MovieController {
     static findMovieById = async (req, res) => {
         try {
             const {id} = req.params;
-            const data = await MovieService.findMovieById(id, res);
+            const data = await MovieService.findMovieById(id);
 
             if (data) {
                 res.status(200).json(data);
@@ -36,7 +36,7 @@ class MovieController {
 
     static createMovie = async (req, res) => {
         try {
-            const data = await MovieService.createMovie(req.body, res);
+            const data = await MovieService.createMovie(req.body);
 
             if (data) {
                 res.status(201).json({
@@ -50,7 +50,6 @@ class MovieController {
         } catch (err) {
             res.status(500).json({
                 message: "Internal Server Error",
-                err,
             });
             throw err;
         }
@@ -60,7 +59,7 @@ class MovieController {
         try {
             const {id} = req.params;
 
-            const data = await MovieService.updateMovie(req.body, id, res);
+            const data = await MovieService.updateMovie(req.body, id);
 
             if (data) {
                 res.status(200).json({
@@ -88,6 +87,7 @@ class MovieController {
             if (data) {
                 res.status(200).json({
                     message: "Deleted movie successfully",
+                    data: data,
                 });
             } else {
                 res.status(404).json({
